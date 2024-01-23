@@ -1,4 +1,5 @@
 const Note = require("../models/note");
+const User = require("../models/user");
 
 const testNotes = [
   { content: "CSS enhances web design", important: true },
@@ -28,8 +29,14 @@ const notesInDB = async () => {
   explicit invocation of it by the custom object from Mongoose */
 };
 
+const usersInDB = async () => {
+  const users = await User.find({});
+  return users.map(user => user.toJSON());
+}
+
 module.exports = {
   testNotes,
   nonExistingID,
   notesInDB,
+  usersInDB
 };
